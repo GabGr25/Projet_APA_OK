@@ -8,18 +8,17 @@ public class CompteurTableau extends Compteur {
 
     public void addOccurrence(String mot) {
         elements=new Mot[TAILLE_INITIALE];
-        if (elements.length != TAILLE_INITIALE) {
+        if (dernier < elements.length) {
             this.elements[dernier] = new Mot(mot);
             dernier++;
         }
         else{
-            elements=new Mot[TAILLE_INITIALE*2];
-
+            int nouvelleTaille= elements.length*2;
+            elements=new Mot[nouvelleTaille];
         }
     }
 
-    public CompteurTableau( Mot[] elements, int dernier) throws FileNotFoundException {
-        super();
-
+    public CompteurTableau(String fichierTexte){
+        super(fichierTexte);
     }
 }

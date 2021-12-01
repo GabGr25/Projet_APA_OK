@@ -12,7 +12,7 @@ public abstract class Compteur {
     // Une fonction abstraite permettant d'ajouter un mot au fichier
     public abstract void addOccurrence(String mot);
 
-    public Compteur(String fichierTexte) throws FileNotFoundException {
+    public Compteur(String fichierTexte){
 
         this.nomFichier = fichierTexte;
         nbMots = 0;
@@ -22,7 +22,12 @@ public abstract class Compteur {
         String[] lineParsed;
         String line;
 
-        Scanner scanner = new Scanner(new File(nomFichier));
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(nomFichier));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         while (scanner.hasNextLine()) {
             line = scanner.nextLine();
