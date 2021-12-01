@@ -3,18 +3,26 @@ import java.io.FileNotFoundException;
 public class CompteurTableau extends Compteur {
     public final int TAILLE_INITIALE = 100;
     private Mot[] elements;
-    private int dernier=0;
+    private int nbElementTab=0;
 
 
     public void addOccurrence(String mot) {
-        elements=new Mot[TAILLE_INITIALE];
-        if (dernier < elements.length) {
-            this.elements[dernier] = new Mot(mot);
-            dernier++;
+        if(elements==null) {
+            elements = new Mot[TAILLE_INITIALE];
         }
         else{
-            int nouvelleTaille= elements.length*2;
-            elements=new Mot[nouvelleTaille];
+            if (nbElementTab < elements.length) {
+                //TODO
+                //Mot.getMot==mot
+                this.elements[nbElementTab] = new Mot(mot);
+                nbElementTab++;
+            } else {
+                Mot[] nouveauTab = new Mot[elements.length * 2];
+                for (int i = 0; i < nbElementTab ; i++) {
+                    nouveauTab[i]=elements[i];
+                }
+                elements=nouveauTab;
+            }
         }
     }
 
