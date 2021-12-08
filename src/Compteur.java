@@ -12,6 +12,10 @@ public abstract class Compteur {
     // Une fonction abstraite permettant d'ajouter un mot au fichier
     public abstract void addOccurrence(String mot);
 
+    public String getNomFichier() {
+        return nomFichier;
+    }
+
     public Compteur(String fichierTexte){
 
         this.nomFichier = fichierTexte;
@@ -48,6 +52,14 @@ public abstract class Compteur {
             }
         }
         scanner.close();
+    }
+
+    public int getNbMots5() {
+        return nbMots5;
+    }
+
+    public int getNbMots() {
+        return nbMots;
     }
 }
 
